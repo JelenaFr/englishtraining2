@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All words</title>
+</head>
+<body>
+<div>
+    <h3>My words.</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>English</th>
+            <th>Estonian</th>
+            <th>Russian</th>
+            <th>Level</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="word: ${words}">
+            <td th:text="${word.inEnglish}"/>
+            <td th:text="${word.inEstonian}"/>
+            <td th:text="${word.inRussian}"/>
+            <td th:text="${word.complexityLevel}"/>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
