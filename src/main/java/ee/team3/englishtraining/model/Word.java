@@ -1,7 +1,7 @@
 package ee.team3.englishtraining.model;
 
 import ee.team3.englishtraining.repo.WordRepo;
-import ee.team3.englishtraining.service.QueryToDataBase;
+
 import lombok.*;
 
 import javax.persistence.*;

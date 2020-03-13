@@ -6,12 +6,42 @@
 </head>
 <body>
 <h3>Training</h3>
-<p class="someword"></p>
+<h2>Select Options</h2>
+<div>
+    <form name="optionsform" th:object="${trainingoptions}"  method="post">
+        <input type="radio" name="level" value="EASY" checked> EASY<br>
+        <input type="radio" name="level" value="MEDIUM"> MEDIUM<br>
+        <input type="radio" name="level" value="HARD"> HARD<br>
+        <br>
+        <select>
+            <option value="">--</option>
+            <option value="ing_est">english-estonian</option>
+            <option value="ing_rus">english-russian</option>
+            <option value="est_ing">estonian-english</option>
+            <option value="est_rus">estonian-russian</option>
+            <option value="rus_eng">russian-english</option>
+            <option value="rus_est">russian-estonian</option>
+        </select>
+        <br>
+        <div>
+            <br>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<br>
 
+<form action="" method="post">
+    <label><b>Self-Test Word</b></label>
+    <p th:text="${anyword}"></p>
+<!--    <input type="text" name="checkword">-->
+</form>
 
-<!--    <p>Message: <input type="text" th:field="*{content}" /></p>-->
-<!--    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
-</form:form>
+<form action="" method="get">
+
+    <input type="text" name="checkword">
+</form>
+
 
 </body>
 </html>

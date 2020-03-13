@@ -35,8 +35,14 @@ public class EnglishtrainingApplication {
         return args -> {
 
             repository.save(new Word("table","laud","стол", w1.getComplexityLevel()) );
-            repository.save(new Word("name","nimi","имя", w2.getComplexityLevel()));
-            repository.save(new Word("weather","ilm","погода", w3.getComplexityLevel()));
+            repository.save(new Word("name","nimi","имя", w1.getComplexityLevel()));
+            repository.save(new Word("weather","ilm","погода", w1.getComplexityLevel()));
+            repository.save(new Word("building ","здание ","hoone", w2.getComplexityLevel()));
+            repository.save(new Word("action","tegevus","действие", w2.getComplexityLevel()));
+            repository.save(new Word("attempt","katse","попытка", w2.getComplexityLevel()));
+            repository.save(new Word("inseparable","lahutamatu","неотделимый", w3.getComplexityLevel()));
+            repository.save(new Word("requirements","nõuded","требования", w3.getComplexityLevel()));
+            repository.save(new Word("vendor","tarnija","продавец", w3.getComplexityLevel()));
         };
     }
 
