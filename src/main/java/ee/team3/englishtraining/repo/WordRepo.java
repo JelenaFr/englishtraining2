@@ -14,29 +14,14 @@ import java.util.List;
 @Repository
 public interface WordRepo extends JpaRepository<Word, Long> {
 
-    @Query( "SELECT n FROM Word n where n.complexity = :complexity order by function('RAND') ")
-    List<Word> findRandomEnglishWord(@Param("complexity")Complexity complexity);
+    @Query("SELECT n FROM Word n where n.complexity = :complexity order by function('RAND') ")
+    List<Word> findRandomEnglishWord(@Param("complexity") Complexity complexity);
 
+    @Query("SELECT n FROM Word n where n.wordId  = :myWord")
+    Long findIdByWord(@Param("myWord") String myWord);
 
-            ;
-//    @Query(value = "SELECT in_english FROM worddb.words where complexity_level ='MEDIUM' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomEnglishMediumWord();
-//    @Query(value = "SELECT in_english FROM worddb.words where complexity_level ='EASY' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomEnglishEasyWord();
-//    @Query(value = "SELECT in_russian FROM worddb.words where complexity_level ='HARD' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomRussianHardWord();
-//    @Query(value = "SELECT in_russian FROM worddb.words where complexity_level ='MEDIUM' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomRussianMediumWord();
-//    @Query(value = "SELECT in_russian FROM worddb.words where complexity_level ='EASY' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomRussianEasyWord();
-//    @Query(value = "SELECT in_estonian FROM worddb.words where complexity_level ='HARD' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomEstonianHardWord();
-//    @Query(value = "SELECT in_estonian FROM worddb.words where complexity_level ='MEDIUM' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomEstonianMediumWord();
-//    @Query(value = "SELECT in_estonian FROM worddb.words where complexity_level ='EASY' order by rand() limit 1;", nativeQuery = true)
-//    String findRandomEstonianEasyWord();
-
-
+//    @Query(value = "select id from worddb.words where in_english = 'table';", nativeQuery = true)
+//    List<Long> findIdByword(String myWord);
 
 
 

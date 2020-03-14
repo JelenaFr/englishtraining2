@@ -27,26 +27,34 @@ public class StartController {
         model.addAttribute("words", wordRepo.findAll());
         return "start";
     }
-//    @GetMapping("/trainingpage")
-//    public Map selectOptions(HttpServletRequest request)throws Exception{
-//        Map refData = new HashMap();
-//        List<ComplexityLevel>level = new ArrayList<>();
-//        level.add()
-//    };
+
+    @PostMapping ("/trainingpage")
+    public void getUserOptions(){};
+
+    static String myWord;
 
     @GetMapping("/trainingpage")
     public String getSomeInglishWord(Model model) {
-        model.addAttribute("anyword", wordRepo.findRandomEnglishWord(Complexity.HARD).get(0));
+    myWord= wordRepo.findRandomEnglishWord(Complexity.HARD).get(0).getInEnglish();
+//        List<Word> listAllWords = wordRepo.findRandomEnglishWord(Complexity.HARD);
+//        String myWord = listAllWords.get(0).getInEnglish();
+//        List<Long> myWordIdList = wordRepo.findIdByword(myWord);
+//        System.out.println(myWord);
+//        System.out.println(myWordIdList.size());
+
+
+
+        model.addAttribute("anyword", myWord );
         return "trainingpage";
     }
 
-    @PostMapping("/trainingpage")
-    public String checkToWords(@ModelAttribute("anyword") Word word) {
-
-        System.out.println(word.getWordId());
-
-        return "trainingpage";
-    }
+//    @PostMapping("/trainingpage")
+//    public String checkToWords(@ModelAttribute("anyword") Word checkWord) {
+//
+//        System.out.println(checkWord.getWordId());
+//
+//        return "trainingpage";
+//    }
 
 
 }
