@@ -34,7 +34,7 @@ public class Word implements Serializable {
 //    private Set<ComplexityLevel> complexitySet  = new HashSet<>();
     @NonNull
     @Enumerated(EnumType.STRING)
-    private ComplexityLevel complexityLevel;
+    private Complexity complexity;
 
 
 //    @Override

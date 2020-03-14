@@ -1,6 +1,5 @@
 package ee.team3.englishtraining;
 
-import ee.team3.englishtraining.model.ComplexityLevel;
 import ee.team3.englishtraining.model.Word;
 import ee.team3.englishtraining.repo.WordRepo;
 import org.springframework.boot.CommandLineRunner;
@@ -8,9 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.HashSet;
+import static ee.team3.englishtraining.model.Complexity.EASY;
+import static ee.team3.englishtraining.model.Complexity.MEDIUM;
+import static ee.team3.englishtraining.model.Complexity.HARD;
 
-import static ee.team3.englishtraining.model.ComplexityLevel.*;
 
 @SpringBootApplication
 public class EnglishtrainingApplication {
@@ -26,23 +26,18 @@ public class EnglishtrainingApplication {
 
     @Bean
     CommandLineRunner runner (WordRepo repository){
-        Word w1 = new Word();
-        Word w2 = new Word();
-        Word w3 = new Word();
-        w1.setComplexityLevel(EASY);
-        w2.setComplexityLevel(MEDIUM);
-        w3.setComplexityLevel(HARD);
+
         return args -> {
 
-            repository.save(new Word("table","laud","стол", w1.getComplexityLevel()) );
-            repository.save(new Word("name","nimi","имя", w1.getComplexityLevel()));
-            repository.save(new Word("weather","ilm","погода", w1.getComplexityLevel()));
-            repository.save(new Word("building ","здание ","hoone", w2.getComplexityLevel()));
-            repository.save(new Word("action","tegevus","действие", w2.getComplexityLevel()));
-            repository.save(new Word("attempt","katse","попытка", w2.getComplexityLevel()));
-            repository.save(new Word("inseparable","lahutamatu","неотделимый", w3.getComplexityLevel()));
-            repository.save(new Word("requirements","nõuded","требования", w3.getComplexityLevel()));
-            repository.save(new Word("vendor","tarnija","продавец", w3.getComplexityLevel()));
+            repository.save(new Word("table","laud","стол", EASY) );
+            repository.save(new Word("name","nimi","имя", EASY));
+            repository.save(new Word("weather","ilm","погода", EASY));
+            repository.save(new Word("building ","здание ","hoone", MEDIUM));
+            repository.save(new Word("action","tegevus","действие", MEDIUM));
+            repository.save(new Word("attempt","katse","попытка", MEDIUM));
+            repository.save(new Word("inseparable","lahutamatu","неотделимый",HARD));
+            repository.save(new Word("requirements","nõuded","требования", HARD));
+            repository.save(new Word("vendor","tarnija","продавец", HARD));
         };
     }
 
