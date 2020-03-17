@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Training page</title>
+</head>
+<body>
+<h3>Training</h3>
+<h2>Select Options</h2>
+<div>
+<form action="" method="post">
+    <label><b>Please translate</b></label>
+    <p th:text="${wordfromrepo.get(0).getInEnglish()}">eng</p>
+    <p th:hidden text="${wordfromrepo.get(0).getInEstonian()}"></p>
+    <p th:hidden text="${wordfromrepo.get(0).getInRussian()}"></p>
+    <p th:hidden text="${wordfromrepo.get(0).wordId}"></p>
+
+<!--    <p th:text="${anyword}"></p>-->
+<!--    <p th:text="${anotherword.compareToIgnoreCase(anyword)}"></p>-->
+<!--    <p th:text="${anyword.getInEnglish()}"></p>-->
+<!--    <p th:text="${anyword.get(0).getInEnglish()}">eng</p>-->
+<!--    <p th:text="${wordfromrepo.get(0).getInEstonian()}">est</p>-->
+<!--    <input type="text" name="checkword">-->
+</form>
+
+<form action="" method="get">
+
+        <p>Self-check word:</p>
+        <p><input name="ip" ></p>
+        <p><input type="submit" value="Check" pattern="A-Za-zА-Яа-яЁё" autofocus></p>
+
+
+
+</form>
+
+</div>
+<br>
+
+
+
+</body>
+</html>

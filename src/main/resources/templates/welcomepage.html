@@ -8,10 +8,11 @@
 <h3>Training</h3>
 <h2>Select Options</h2>
 <div>
-    <form name="optionsform"  th:field="*{complexity}"  method="post">
-        <input type="radio" name="complexity" value="EASY" checked> EASY<br>
-        <input type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
-        <input type="radio" name="complexity" value="HARD"> HARD<br>
+    <form th:action="@{/welcomepage}" th:object="${userSelectionForm}" method="post">
+    
+        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked> EASY<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"> HARD<br>
         <br>
         <select>
             <option value="">--</option>
@@ -31,30 +32,6 @@
 </div>
 <br>
 
-<form action="" method="post">
-    <label><b>Please translate</b></label>
-    <p th:text="${wordfromrepo.get(0).getInEnglish()}">eng</p>
-    <p th:hidden text="${wordfromrepo.get(0).getInEstonian()}"></p>
-    <p th:hidden text="${wordfromrepo.get(0).getInRussian()}"></p>
-    <p th:hidden text="${wordfromrepo.get(0).wordId}"></p>
-
-<!--    <p th:text="${anyword}"></p>-->
-<!--    <p th:text="${anotherword.compareToIgnoreCase(anyword)}"></p>-->
-<!--    <p th:text="${anyword.getInEnglish()}"></p>-->
-<!--    <p th:text="${anyword.get(0).getInEnglish()}">eng</p>-->
-<!--    <p th:text="${wordfromrepo.get(0).getInEstonian()}">est</p>-->
-<!--    <input type="text" name="checkword">-->
-</form>
-
-<form action="" method="get">
-
-        <p>Self-check word:</p>
-        <p><input name="ip" ></p>
-        <p><input type="submit" value="Check" pattern="A-Za-zА-Яа-яЁё" autofocus></p>
-
-
-
-</form>
 
 
 </body>
