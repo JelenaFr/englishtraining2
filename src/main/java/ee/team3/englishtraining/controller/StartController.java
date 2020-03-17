@@ -43,16 +43,7 @@ public class StartController {
 //        return "trainingpage";
 //    }
 
-//    @GetMapping("/trainingpage")
-//    public String getSameEstonianWord(Model model) {
-//        myWord= wordRepo.findRandomEnglishWord(Complexity.HARD).get(0).getInEnglish();
-////        List<Word> listAllWords = wordRepo.findRandomEnglishWord(Complexity.HARD);
-////        String myWord = listAllWords.get(0).getInEnglish();
-////        List<Long> myWordIdList = wordRepo.findIdByword(myWord);
-////        System.out.println(myWord);
-////        System.out.println(myWordIdList.size());
-//
-//
+
 //
 //        model.addAttribute("sameword", myWord );
 //        return "trainingpage";

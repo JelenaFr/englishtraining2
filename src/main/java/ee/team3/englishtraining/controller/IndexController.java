@@ -5,21 +5,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping({ "/", "/index" })
 public class IndexController {
 
-    @GetMapping
-    public String index(Model model) {
-
-
-        return "index";
+    @RequestMapping( "/" )
+    public String home(Model model) {
+        model.addAttribute("title", "Main Page");
+        return "home";
     }
-    @PostMapping
-    public String toLanguage(Model model) {
-
-        return "saved";
+    @RequestMapping( "/languages" )
+    public String getLanguages(Model model) {
+        model.addAttribute("title", "Languages Page");
+        return "languages";
     }
-
+//    @PostMapping
+//    public String toLanguage(Model model) {
+//
+//        return "saved";
+//    }
+//
 }
