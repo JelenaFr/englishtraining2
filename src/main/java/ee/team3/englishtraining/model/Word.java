@@ -1,46 +1,42 @@
 package ee.team3.englishtraining.model;
 
-import ee.team3.englishtraining.repo.WordRepo;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-import lombok.*;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "words")
-public class Word implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable =  false, nullable = false)
-    private Long wordId;
-    @NonNull
-    private String inEnglish;
-    @NonNull
-    private String inEstonian;
-    @NonNull
-    private String inRussian;
-//    @NonNull
-//    @ElementCollection(targetClass = ComplexityLevel.class, fetch = FetchType.EAGER)
-//    @CollectionTable(name = "complexity", joinColumns = @JoinColumn(name = "wordId"))
-//    @Enumerated(EnumType.STRING)
-//    private Set<ComplexityLevel> complexitySet  = new HashSet<>();
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    private Complexity complexity;
+@Table(name = "words") // class i tablicu vsegda nazivai odinakovo
+public class Word {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, nullable = false)
+	private Long wordId; // takze kak i s tablicoi, nazivai odinakogo -> id
+	@NonNull
+	private String inEnglish;
+	@NonNull
+	private String inEstonian;
+	@NonNull
+	private String inRussian;
+	@NonNull
+	@Enumerated(EnumType.STRING)
+	private Complexity complexity;
+	@Transient
+	private String translation;
 
-
-
-
-//    @Override
-//    public Collection<Word> findRandomEnglishWord() {
-//        return ;
-//    }
 }

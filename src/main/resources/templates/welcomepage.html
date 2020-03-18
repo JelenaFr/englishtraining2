@@ -14,15 +14,11 @@
         <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
         <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"> HARD<br>
         <br>
-        <select>
-            <option value="">--</option>
-            <option value="ing_est">english-estonian</option>
-            <option value="ing_rus">english-russian</option>
-            <option value="est_ing">estonian-english</option>
-            <option value="est_rus">estonian-russian</option>
-            <option value="rus_eng">russian-english</option>
-            <option value="rus_est">russian-estonian</option>
-        </select>
+        <select th:field="*{language}">
+		    <option th:value="'none'" th:text="---"></option>
+		    <option th:value="'ing_est'" th:text="english-estonian"></option>
+		    <option th:value="'ing_rus'" th:text="english-russian"></option>
+		</select>
         <br>
         <div>
             <br>

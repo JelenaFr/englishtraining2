@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Training page</title>
+</head>
+<body>
+	<h2>Correct translations</h2>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>Estonian</th>
+					<th>English</th>
+					<th>Your Answer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="word: ${correctTranslations}">
+					<td th:text="${word.inEstonian}" />
+					<td th:text="${word.inEnglish}" />
+					<td th:text="${word.translation}" />
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2>Wrong translations</h2>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>Estonian</th>
+					<th>English</th>
+					<th>Your Answer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="word: ${wrongTranslations}">
+					<td th:text="${word.inEstonian}" />
+					<td th:text="${word.inEnglish}" />
+					<td th:text="${word.translation}" />
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+<a href="welcomepage">Try again</a>
+
+</body>
+</html>
