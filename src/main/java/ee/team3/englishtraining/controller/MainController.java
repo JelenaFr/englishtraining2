@@ -3,6 +3,8 @@ package ee.team3.englishtraining.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ee.team3.englishtraining.controller.forms.UserSelectionForm;
+import ee.team3.englishtraining.controller.forms.UserTranslationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ import ee.team3.englishtraining.repo.WordRepo;
 
 @Controller
 @RequestMapping
-public class StartController {
+public class MainController {
 	@Autowired
 	private WordRepo wordRepo;
 
@@ -26,13 +28,13 @@ public class StartController {
 		return "start";
 	}
 
-	@GetMapping("/welcomepage")
+	@GetMapping("/")
 	public String welcomepage(Model model) {
 		model.addAttribute("userSelectionForm", new UserSelectionForm());
-		return "welcomepage";
+		return "optionpage";
 	}
 
-	@PostMapping("/welcomepage")
+	@PostMapping("/optionpage")
 	public String userSelection(Model model, @ModelAttribute("userSelectionForm") UserSelectionForm selection) {
 		List<Word> words = wordRepo.findByComplexity(selection.getComplexity());
 		UserTranslationForm form = new UserTranslationForm();
@@ -54,7 +56,6 @@ public class StartController {
 		model.addAttribute("correctTranslations", correctTranslations);
 		model.addAttribute("wrongTranslations", words);
 
-		
 		return "resultpage";
 	}
 

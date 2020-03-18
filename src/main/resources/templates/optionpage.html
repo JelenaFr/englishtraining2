@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Training page</title>
+    <title>Option page</title>
 </head>
 <body>
 <h3>Training</h3>
 <h2>Select Options</h2>
 <div>
-    <form th:action="@{/welcomepage}" th:object="${userSelectionForm}" method="post">
+    <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post">
     
         <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked> EASY<br>
         <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
@@ -17,7 +17,7 @@
         <select th:field="*{language}">
 		    <option th:value="'none'" th:text="---"></option>
 		    <option th:value="'ing_est'" th:text="english-estonian"></option>
-		    <option th:value="'ing_rus'" th:text="english-russian"></option>
+		    <option th:value="'ing_rus'" th:text="estonian-english"></option>
 		</select>
         <br>
         <div>
