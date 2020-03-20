@@ -21,11 +21,11 @@
 				</thead>
 				<tbody>
 					<tr th:each="word, itemStat : *{words}">
-						<td th:text="*{words[__${itemStat.index}__].inEstonian}" />
-						<td><input th:field="*{words[__${itemStat.index}__].translation}" /></td>
-						<input type="hidden" th:field="*{words[__${itemStat.index}__].inEnglish}" />
-						<input type="hidden" th:field="*{words[__${itemStat.index}__].inEstonian}" />
-						<input type="hidden" th:field="*{words[__${itemStat.index}__].wordId}" />
+						<td th:text="*{words[__${itemStat.index}__].inEstonian}" autocomplete="off"/>
+						<td><input th:field="*{words[__${itemStat.index}__].translation}"autocomplete="off" /></td>
+						<input type="hidden" th:field="*{words[__${itemStat.index}__].inEnglish}"autocomplete="off" />
+						<input type="hidden" th:field="*{words[__${itemStat.index}__].inEstonian}"autocomplete="off" />
+						<input type="hidden" th:field="*{words[__${itemStat.index}__].wordId}"autocomplete="off" />
 					</tr>
 				</tbody>
 			</table>

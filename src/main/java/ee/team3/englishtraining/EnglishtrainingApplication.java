@@ -19,10 +19,6 @@ public class EnglishtrainingApplication {
         SpringApplication.run(EnglishtrainingApplication.class, args);
     }
 
-//    public EnglishtrainingApplication() {
-//        super();
-//    }
-
 
     @Bean
     CommandLineRunner runner (WordRepo repository){
@@ -32,7 +28,7 @@ public class EnglishtrainingApplication {
             repository.save(new Word("table","laud","стол", EASY) );
             repository.save(new Word("name","nimi","имя", EASY));
             repository.save(new Word("weather","ilm","погода", EASY));
-            repository.save(new Word("building ","hoone","здание", MEDIUM));
+            repository.save(new Word("building","hoone","здание", MEDIUM));
             repository.save(new Word("action","tegevus","действие", MEDIUM));
             repository.save(new Word("attempt","katse","попытка", MEDIUM));
             repository.save(new Word("inseparable","lahutamatu","неотделимый",HARD));
