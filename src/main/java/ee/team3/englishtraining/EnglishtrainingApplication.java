@@ -1,5 +1,7 @@
 package ee.team3.englishtraining;
 
+
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import ee.team3.englishtraining.model.Word;
 import ee.team3.englishtraining.repo.WordRepo;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +15,7 @@ import static ee.team3.englishtraining.model.Complexity.HARD;
 
 
 @SpringBootApplication
+@EnableAdminServer
 public class EnglishtrainingApplication {
 
     public static void main(String[] args) {
