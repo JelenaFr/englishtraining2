@@ -56,6 +56,13 @@ public class MainController {
 		return "edit";
 	}
 
+	@PostMapping("start/edit/{id}")
+	public String updateBook(@PathVariable("id") Long wordId, Word word) {
+		Word fixingword = wordRepo.findById(wordId).get();
+		wordRepo.save(word);
+		return "redirect:/start/";
+	}
+
 	@GetMapping("/")
 	public String welcomepage(Model model) {
 		model.addAttribute("userSelectionForm", new UserSelectionForm());

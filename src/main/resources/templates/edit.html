@@ -9,12 +9,14 @@
 
 <h3>Edit page</h3>
 <div>
-    <form action="#" th:action="@{'/start/'+${word.wordId}}" th:object="${word}" method="post">
-        <p hidden>id: <input type="text" th:field="*{wordId}" /></p>
-        <p>English: <input type="text" th:field="*{inEnglish}"/></p>
+    <form action="#" th:action="@{'/start/edit/'+${word.wordId}}" th:object="${word}" method="post">
+        <p hidden>id: <input type="text" th:field="*{wordId}"  /></p>
+        <p>English: <input type="text" th:field="*{inEnglish}" /></p>
         <p>Estonian: <input type="text" th:field="*{inEstonian}" /></p>
         <p>Russian: <input type="text" th:field="*{inRussian}" /></p>
-        <p>Complexity: <input type="text" th:field="*{complexity}" /></p>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked> EASY<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"> HARD<br>
 
         <p><input type="submit" value="Update"></p>
     </form>
