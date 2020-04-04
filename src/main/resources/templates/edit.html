@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+
+</head>
+<tbody>
+
+<h3>Edit page</h3>
+<div>
+    <form action="#" th:action="@{'/start/'+${word.wordId}}" th:object="${word}" method="post">
+        <p hidden>id: <input type="text" th:field="*{wordId}" /></p>
+        <p>English: <input type="text" th:field="*{inEnglish}"/></p>
+        <p>Estonian: <input type="text" th:field="*{inEstonian}" /></p>
+        <p>Russian: <input type="text" th:field="*{inRussian}" /></p>
+        <p>Complexity: <input type="text" th:field="*{complexity}" /></p>
+
+        <p><input type="submit" value="Update"></p>
+    </form>
+</div>

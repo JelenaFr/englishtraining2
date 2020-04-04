@@ -6,6 +6,11 @@
 </head>
 <body>
 <div>
+
+    <form th:action="@{/login}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+
     <h3>My words.</h3>
     <table>
         <thead>
@@ -22,10 +27,13 @@
             <td th:text="${word.inEstonian}"/>
             <td th:text="${word.inRussian}"/>
             <td th:text="${word.complexity}"/>
+            <td><a href=""th:href="@{'/start/'+ ${word.wordId} + '/edit'}">EDIT</a></td>
+            <td><a href=""th:href="@{'/start/'+${word.wordId} + '/delete'}">DELETE</a></td>
 
         </tr>
         </tbody>
     </table>
+    <p><a th:href="@{/start/addword}">Add new word</a></p>
 </div>
 
 </body>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Words</title>
+
+</head>
+<body>
+
+<h3>Add word</h3>
+
+<div>
+    <form action="#" th:action="@{/start/addword}" th:object="${newword}"method="post">
+
+        <p>English: <input type="text" th:field="*{inEnglish}"/></p>
+        <p>Estonian: <input type="text" th:field="*{inEstonian}" /></p>
+        <p>Russian: <input type="text" th:field="*{inRussian}" /></p>
+        <p>Complexity: <input type="text" th:field="*{complexity}" /></p>
+        <p><input type="submit" value="Add"></p>
+
+    </form></div>
+
+
+
+
+
+
+
+</body>
+</html>

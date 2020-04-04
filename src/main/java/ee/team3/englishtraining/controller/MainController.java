@@ -1,5 +1,6 @@
 package ee.team3.englishtraining.controller;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,10 +9,7 @@ import ee.team3.englishtraining.controller.forms.UserTranslationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import ee.team3.englishtraining.model.Word;
 import ee.team3.englishtraining.repo.WordRepo;
@@ -26,6 +24,36 @@ public class MainController {
 	public String startPage(Model model) {
 		model.addAttribute("words", wordRepo.findAll());
 		return "start";
+	}
+
+
+	@GetMapping("/start/{id}/delete")
+	public String showById(@PathVariable("id") Long wordId) {
+		wordRepo.deleteById(wordId);
+		return "redirect:/start";
+	}
+	@GetMapping(value = "/start/addword")
+	public String index(Model model) {
+		model.addAttribute("newword", new Word());
+		return "addword";
+	}
+
+	@PostMapping("/start/addword")
+	public String addBookform(Word word, Model model) {
+		model.addAttribute("newword", new Word());
+		wordRepo.save(word);
+		return "redirect:/start";
+
+	}
+
+	@GetMapping("/start/{id}/edit")
+	public String editFormById(@PathVariable("id") Long wordId, Model model) {
+		if (wordRepo.findById(wordId).isPresent()) {
+			model.addAttribute("word", wordRepo.findById(wordId).get());
+		} else {
+			model.addAttribute("word", new Word());
+		}
+		return "edit";
 	}
 
 	@GetMapping("/")
