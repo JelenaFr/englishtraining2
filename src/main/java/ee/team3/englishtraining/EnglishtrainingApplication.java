@@ -4,7 +4,9 @@ import ee.team3.englishtraining.model.Word;
 import ee.team3.englishtraining.repo.WordRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import static ee.team3.englishtraining.model.Complexity.EASY;
@@ -12,7 +14,8 @@ import static ee.team3.englishtraining.model.Complexity.MEDIUM;
 import static ee.team3.englishtraining.model.Complexity.HARD;
 
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
+
 public class EnglishtrainingApplication {
 
     public static void main(String[] args) {

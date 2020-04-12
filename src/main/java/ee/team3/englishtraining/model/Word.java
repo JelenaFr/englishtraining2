@@ -39,4 +39,6 @@ public class Word {
 	@Transient
 	private String translation;
 
+
+
 }
