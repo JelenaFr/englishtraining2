@@ -69,9 +69,9 @@ public class MainController {
 	}
 
 	@PostMapping("/optionpage")
-	public String userSelection(Model model, @ModelAttribute("userSelectionForm") UserSelectionForm selection) {
+	public String userSelection(Model model, @ModelAttribute("userSelectionForm") UserSelectionForm selection, String string) {
 //		List<Word> words = wordRepo.findByComplexity(selection.getComplexity());
-		List<Word> words = wordRepo.findByComplexityAndLanguage(selection.getComplexity(), selection.getLanguage());
+		List<Word> words = wordRepo.findByComplexityAndLanguage(selection.getComplexity(), selection.setLanguage(););
 		UserTranslationForm form = new UserTranslationForm();
 		form.setWords(words);
 		model.addAttribute("translationForm", form);

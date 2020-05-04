@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Option page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -10,6 +11,10 @@
 <body>
 <h3>Training</h3>
 <h2>Select Options</h2>
+
+
+
+
 <div>
     <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post">
     
@@ -17,16 +22,26 @@
         <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
         <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"> HARD<br>
         <br>
-        <select th:field="*{language}" aria-multiselectable="false">
-		    <option th:value="'none'" th:text="---"></option>
-		    <option th:value="'ing_est'" selected th:text="english-estonian"></option>
-		    <option th:value="'ing_est'" selected th:text="estonian-english"></option>
-		</select>
         <br>
-        <div>
-            <br>
+
+        <select id= "firstLanguage"name="firstLanguage">
+            <option disabled>Please select first language</option>
+            <option value="inEnglish"  th:text="English"  selected>english</option>
+            <option value="inEstonian" th:text="Estonian" selected>estonian</option>
+            <option value="inRussian"  th:text="Russian"  selected>russian</option>
+
+        </select>
+        <br>
+        <br>
+        <select id= "secondLanguage"name="secondLanguage">
+            <option disabled>Please select second language</option>
+            <option value="english" th:text="inEnglish"selected>english</option>
+            <option value="estonian"th:text="inEstonian"selected>estonian</option>
+            <option value="russian" th:text="inRussian"selected>russian</option>
+        </select>
+        <br>
+        <br>
             <button type="submit">Submit</button>
-        </div>
     </form>
 </div>
 <br>
