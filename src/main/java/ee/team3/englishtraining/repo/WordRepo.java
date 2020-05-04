@@ -14,5 +14,6 @@ import ee.team3.englishtraining.model.Word;
 public interface WordRepo extends JpaRepository<Word, Long> {
 
 	List<Word> findByComplexity(@Param("complexity") Complexity complexity);
+	List<Word> findByComplexityAndLanguage(@Param("complexity") Complexity complexity, @Param ("language")Word word);
 
 }
