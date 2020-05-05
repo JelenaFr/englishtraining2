@@ -1,41 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-	xmlns:form="http://www.w3.org/1999/xhtml">
+      xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<title>Training page</title>
+    <meta charset="UTF-8">
+    <title>Training page</title>
 </head>
 <body>
-	<h3>Training</h3>
-	<h2>Select Options</h2>
-	<div>
-		<form th:action="@{/trainingpage}" th:object="${translationForm}" method="post">
-			<label><b>Please translate</b></label>
+<h3>Training</h3>
+<h2>Select Options</h2>
+<div>
+    <form th:action="@{/trainingpage}" th:object="${translationForm}" method="post">
+        <label><b>Please translate</b></label>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Estonian</th>
-						<th>English</th>
-					</tr>
-				</thead>
-				<tbody>
+        <table>
+            <thead>
+            <tr>
+                <th th:text="*{fromLanguage}"></th>
+                <th th:text="*{toLanguage}"></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:switch="*{fromLanguage}">
+                <div th:case="'inEnglish'">
+                    <tr th:each="word, itemStat : *{words}">
+                        <td th:text="*{words[__${itemStat.index}__].inEnglish}"/>
+
+                        <td><input th:field="*{words[__${itemStat.index}__].translation}" autocomplete="off"/></td>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inEnglish}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inEstonian}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inRussian}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].wordId}"/>
+                    </tr>
+                </div>
+                <div th:case="'inEstonian'">
+                    <tr th:each="word, itemStat : *{words}">
+                        <td th:text="*{words[__${itemStat.index}__].inEstonian}"/>
+                        <td><input th:field="*{words[__${itemStat.index}__].translation}" autocomplete="off"/></td>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inEnglish}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inEstonian}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inRussian}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].wordId}"/>
+                    </tr>
+                </div>
+                <div th:case="'inRussian'">
+                    <tr th:each="word, itemStat : *{words}">
+                        <td th:text="*{words[__${itemStat.index}__].inRussian}"/>
+                        <td><input th:field="*{words[__${itemStat.index}__].translation}" autocomplete="off"/></td>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inEnglish}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inEstonian}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].inRussian}"/>
+                        <input type="hidden" th:field="*{words[__${itemStat.index}__].wordId}"/>
+                    </tr>
+                </div>
+            </th:block>
 
 
-					<tr th:each="word, itemStat : *{words}">
-						<td th:text="*{words[__${itemStat.index}__].inEstonian}"autocomplete="off"/>
-						<td><input th:field="*{words[__${itemStat.index}__].translation}"autocomplete="off"  /></td>
-						<input type="hidden" th:field="*{words[__${itemStat.index}__].inEnglish}" />
-						<input type="hidden" th:field="*{words[__${itemStat.index}__].inEstonian}" />
-						<input type="hidden" th:field="*{words[__${itemStat.index}__].wordId}" />
-					</tr>
-				</tbody>
-			</table>
-			<button type="submit">Submit</button>
-		</form>
 
-	</div>
+            </tbody>
+        </table>
 
+        <input type="hidden" th:field="*{toLanguage}"/>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
 
 
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-	xmlns:form="http://www.w3.org/1999/xhtml">
+>
 <head>
 <meta charset="UTF-8">
 <title>Training page</title>
@@ -8,11 +8,11 @@
 <body>
 	<h2>Correct translations</h2>
 	<div>
-		<table>
+		<table th:object="${translationForm}" method="post">
 			<thead>
 				<tr>
-					<th>Estonian</th>
-					<th>English</th>
+					<th th:text="*{fromLanguage}"></th>
+					<th th:text="*{toLanguage}"></th>
 					<th>Your Answer</th>
 				</tr>
 			</thead>

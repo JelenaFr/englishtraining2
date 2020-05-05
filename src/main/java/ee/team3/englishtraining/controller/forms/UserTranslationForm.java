@@ -9,4 +9,6 @@ import lombok.Data;
 public class UserTranslationForm {
 
 	private List<Word> words;
+	private String fromLanguage;
+	private String toLanguage;
 }
