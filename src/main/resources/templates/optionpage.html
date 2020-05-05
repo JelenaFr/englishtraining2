@@ -24,20 +24,20 @@
         <br>
         <br>
 
-        <select  id= "firstLanguage"name="firstLanguage">
-            <option disabled>Please select first language</option>
-            <option value="inEnglish"  th:text="English"  selected>english</option>
-            <option value="inEstonian" th:text="Estonian" selected>estonian</option>
-            <option value="inRussian"  th:text="Russian"  selected>russian</option>
+        <select>
+            <option disabled value="">Please select first language</option>
+            <option th:field="*{fromLanguage}" value="inEnglish"  th:text="English"  >english</option>
+            <option th:field="*{fromLanguage}" value="inEstonian" th:text="Estonian" >estonian</option>
+            <option th:field="*{fromLanguage}" value="inRussian"  th:text="Russian"  >russian</option>
 
         </select>
         <br>
         <br>
-        <select  id= "secondLanguage"name="secondLanguage">
+        <select >
             <option disabled value="">Please select second language</option>
-            <option value="inEnglish" th:text="English" selected>english</option>
-            <option value="inEstonian"th:text="Estonian" selected>estonian</option>
-            <option value="inRussian" th:text="Russian" selected>russian</option>
+            <option th:field="*{toLanguage}" value="inEnglish" th:text="English" >english</option>
+            <option th:field="*{toLanguage}" value="inEstonian"th:text="Estonian" >estonian</option>
+            <option th:field="*{toLanguage}" value="inRussian" th:text="Russian" >russian</option>
         </select>
         <br>
         <br>
@@ -45,8 +45,6 @@
     </form>
 </div>
 <br>
-
-
 
 </body>
 </html>

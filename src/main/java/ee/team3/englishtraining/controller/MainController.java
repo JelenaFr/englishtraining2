@@ -71,7 +71,6 @@ public class MainController {
 	@PostMapping("/optionpage")
 	public String userSelection(Model model, @ModelAttribute("userSelectionForm") UserSelectionForm selection) {
 		List<Word> words = wordRepo.findByComplexity(selection.getComplexity());
-	//	List<Word> words = wordRepo.findByComplexityAndLanguage(selection.getComplexity(),selection.getFirstLanguage(), selection.getSecondLanguage());
 		UserTranslationForm form = new UserTranslationForm();
 		form.setWords(words);
 		model.addAttribute("translationForm", form);
@@ -82,10 +81,14 @@ public class MainController {
 	@PostMapping("/trainingpage")
 	public String userTranslations(Model model, @ModelAttribute("translationForm") UserTranslationForm translationForm) {
 		List<Word> words = translationForm.getWords();
+
+
 		List<Word> correctTranslations = words.stream()
 				.filter(word-> word.getInEnglish().equals(word.getTranslation()))
+				.filter(word-> word.getInEstonian().equals(word.getTranslation()))
+				.filter(word-> word.getInRussian().equals(word.getTranslation()))
 				.collect(Collectors.toList());
-		
+
 		words.removeAll(correctTranslations);
 
 		model.addAttribute("correctTranslations", correctTranslations);

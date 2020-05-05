@@ -20,6 +20,8 @@
 					</tr>
 				</thead>
 				<tbody>
+
+
 					<tr th:each="word, itemStat : *{words}">
 						<td th:text="*{words[__${itemStat.index}__].inEstonian}"autocomplete="off"/>
 						<td><input th:field="*{words[__${itemStat.index}__].translation}"autocomplete="off"  /></td>
