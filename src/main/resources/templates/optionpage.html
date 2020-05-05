@@ -24,7 +24,7 @@
         <br>
         <br>
 
-        <select>
+        <select th:field="*{fromLanguage}">
             <option disabled value="">Please select first language</option>
             <option th:field="*{fromLanguage}" value="inEnglish"  th:text="English"  >english</option>
             <option th:field="*{fromLanguage}" value="inEstonian" th:text="Estonian" >estonian</option>
@@ -33,7 +33,7 @@
         </select>
         <br>
         <br>
-        <select >
+        <select th:field="*{toLanguage}">
             <option disabled value="">Please select second language</option>
             <option th:field="*{toLanguage}" value="inEnglish" th:text="English" >english</option>
             <option th:field="*{toLanguage}" value="inEstonian"th:text="Estonian" >estonian</option>
