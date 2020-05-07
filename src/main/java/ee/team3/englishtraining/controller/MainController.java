@@ -20,8 +20,6 @@ public class MainController {
     private WordRepo wordRepo;
 
 
-//	ArrayList<String> userLanguages = new ArrayList<>();
-
     @GetMapping("/start")
     public String startPage(Model model) {
         model.addAttribute("words", wordRepo.findAll());
@@ -46,7 +44,6 @@ public class MainController {
         model.addAttribute("newword", new Word());
         wordRepo.save(word);
         return "redirect:/start";
-
     }
 
     @GetMapping("/start/{id}/edit")
@@ -79,10 +76,7 @@ public class MainController {
         form.setWords(words);
         form.setFromLanguage(selection.getFromLanguage());
         form.setToLanguage(selection.getToLanguage());
-
         model.addAttribute("translationForm", form);
-
-
         return "trainingpage";
     }
 
@@ -90,27 +84,30 @@ public class MainController {
     public String userTranslations(Model model, @ModelAttribute("translationForm") UserTranslationForm translationForm) {
         List<Word> words = translationForm.getWords();
         List<Word> correctTranslations = new ArrayList<>();
-        if (translationForm.getToLanguage() == "inEnglish") {
+
+        if (translationForm.getToLanguage().equals("inEnglish")) {
             correctTranslations = words.stream()
                     .filter(word -> word.getInEnglish().equals(word.getTranslation()))
                     .collect(Collectors.toList());
+            words.removeAll(correctTranslations);
         }
-        if (translationForm.getToLanguage() == "inEstonian") {
+        if (translationForm.getToLanguage().equals("inEstonian")) {
             correctTranslations = words.stream()
                     .filter(word -> word.getInEstonian().equals(word.getTranslation()))
                     .collect(Collectors.toList());
+            words.removeAll(correctTranslations);
         }
-        if (translationForm.getToLanguage() == "inRussian") {
+        if (translationForm.getToLanguage().equals("inRussian")) {
             correctTranslations = words.stream()
                     .filter(word -> word.getInRussian().equals(word.getTranslation()))
                     .collect(Collectors.toList());
+            words.removeAll(correctTranslations);
         }
 
-        words.removeAll(correctTranslations);
-
+        model.addAttribute("fromLanguage", translationForm.getFromLanguage());
+        model.addAttribute("toLanguage", translationForm.getToLanguage());
         model.addAttribute("correctTranslations", correctTranslations);
         model.addAttribute("wrongTranslations", words);
-
         return "resultpage";
     }
 

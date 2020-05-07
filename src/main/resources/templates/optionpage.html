@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <meta charset="UTF-8"/>
@@ -7,20 +7,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+
 </head>
 <body>
 <h3>Training</h3>
 <h2>Select Options</h2>
 
-
-
-
 <div>
     <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post">
-    
-        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked> EASY<br>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"> HARD<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" > EASY<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM" > MEDIUM<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD" > HARD<br>
         <br>
         <br>
 
@@ -39,6 +36,8 @@
             <option th:field="*{toLanguage}" value="inEstonian"th:text="Estonian" >estonian</option>
             <option th:field="*{toLanguage}" value="inRussian" th:text="Russian" >russian</option>
         </select>
+        <br>
+        <br>
         <br>
         <br>
             <button type="submit">Submit</button>

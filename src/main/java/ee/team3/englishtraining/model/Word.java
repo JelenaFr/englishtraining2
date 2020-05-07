@@ -1,14 +1,7 @@
 package ee.team3.englishtraining.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,12 +14,12 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "words") // class i tablicu vsegda nazivai odinakovo
+@Table(name = "Words") // class i tablicu vsegda nazivai odinakovo
 public class Word {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", updatable = false, nullable = false)
-	private Long wordId; // takze kak i s tablicoi, nazivai odinakogo -> id
+	@Column(name = "wordid", updatable = false, nullable = false)
+	private Long wordId;
 	@NonNull
 	private String inEnglish;
 	@NonNull

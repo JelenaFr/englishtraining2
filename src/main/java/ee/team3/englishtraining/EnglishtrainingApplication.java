@@ -14,13 +14,14 @@ import static ee.team3.englishtraining.model.Complexity.MEDIUM;
 import static ee.team3.englishtraining.model.Complexity.HARD;
 
 
-@SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
 
+@SpringBootApplication()
 public class EnglishtrainingApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EnglishtrainingApplication.class, args);
     }
+
 
 
     @Bean

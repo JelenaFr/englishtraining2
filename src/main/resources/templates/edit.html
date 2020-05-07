@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </head>
 <tbody>
@@ -10,14 +12,13 @@
 <h3>Edit page</h3>
 <div>
     <form action="#" th:action="@{'/start/edit/'+${word.wordId}}" th:object="${word}" method="post">
-        <p hidden>id: <input type="text" th:field="*{wordId}"  /></p>
-        <p>English: <input type="text" th:field="*{inEnglish}" /></p>-->
-
-        <p>Estonian: <input type="text" th:field="*{inEstonian}" /></p>
-        <p>Russian: <input type="text" th:field="*{inRussian}" /></p>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked> EASY<br>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM"> MEDIUM<br>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"> HARD<br>
+        <p hidden>id: <input type="text" th:field="*{wordId}"/></p>
+        <p>English: <input type="text" th:field="*{inEnglish}"/></p>
+        <p>Estonian: <input type="text" th:field="*{inEstonian}"/></p>
+        <p>Russian: <input type="text" th:field="*{inRussian}"/></p>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked>EASY<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM">MEDIUM<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD">HARD<br>
 
         <p><input type="submit" value="Update"></p>
     </form>
