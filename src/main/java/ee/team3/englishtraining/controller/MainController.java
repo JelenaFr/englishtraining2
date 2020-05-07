@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -87,19 +86,19 @@ public class MainController {
 
         if (translationForm.getToLanguage().equals("inEnglish")) {
             correctTranslations = words.stream()
-                    .filter(word -> word.getInEnglish().equals(word.getTranslation()))
+                    .filter(word -> word.getInEnglish().equals(word.getTranslation().trim().toLowerCase()))
                     .collect(Collectors.toList());
             words.removeAll(correctTranslations);
         }
         if (translationForm.getToLanguage().equals("inEstonian")) {
             correctTranslations = words.stream()
-                    .filter(word -> word.getInEstonian().equals(word.getTranslation()))
+                    .filter(word -> word.getInEstonian().equals(word.getTranslation().trim().toLowerCase()))
                     .collect(Collectors.toList());
             words.removeAll(correctTranslations);
         }
         if (translationForm.getToLanguage().equals("inRussian")) {
             correctTranslations = words.stream()
-                    .filter(word -> word.getInRussian().equals(word.getTranslation()))
+                    .filter(word -> word.getInRussian().equals(word.getTranslation().trim().toLowerCase()))
                     .collect(Collectors.toList());
             words.removeAll(correctTranslations);
         }

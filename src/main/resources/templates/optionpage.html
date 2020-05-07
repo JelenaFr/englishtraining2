@@ -29,7 +29,7 @@
 
 <div>
     <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post">
-        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" > EASY<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked="checked"> EASY<br>
         <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM" > MEDIUM<br>
         <input th:field="*{complexity}" type="radio" name="complexity" value="HARD" > HARD<br>
         <br>
