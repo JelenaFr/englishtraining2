@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping
-public class MainController {
+public class MainController  {
     @Autowired
     private WordRepo wordRepo;
 
@@ -33,13 +35,13 @@ public class MainController {
     }
 
     @GetMapping(value = "/start/addword")
-    public String index(Model model) {
+    public String index( Model model) {
         model.addAttribute("newword", new Word());
         return "addword";
     }
 
     @PostMapping("/start/addword")
-    public String addBookform(Word word, Model model) {
+    public String addBookform(@Valid Word word, Model model) {
         model.addAttribute("newword", new Word());
         wordRepo.save(word);
         return "redirect:/start";
@@ -56,7 +58,7 @@ public class MainController {
     }
 
     @PostMapping("start/edit/{id}")
-    public String updateBook(@PathVariable("id") Long wordId, Word word) {
+    public String updateBook( @PathVariable("id") Long wordId, @Valid Word word) {
         Word fixingword = wordRepo.findById(wordId).get();
         wordRepo.save(word);
         return "redirect:/start/";
@@ -65,6 +67,7 @@ public class MainController {
     @GetMapping("/")
     public String welcomepage(Model model) {
         model.addAttribute("userSelectionForm", new UserSelectionForm());
+
         return "optionpage";
     }
 
@@ -73,9 +76,15 @@ public class MainController {
         List<Word> words = wordRepo.findByComplexity(selection.getComplexity());
         UserTranslationForm form = new UserTranslationForm();
         form.setWords(words);
+
         form.setFromLanguage(selection.getFromLanguage());
         form.setToLanguage(selection.getToLanguage());
+
         model.addAttribute("translationForm", form);
+
+
+
+
         return "trainingpage";
     }
 
@@ -86,19 +95,19 @@ public class MainController {
 
         if (translationForm.getToLanguage().equals("inEnglish")) {
             correctTranslations = words.stream()
-                    .filter(word -> word.getInEnglish().equals(word.getTranslation().trim().toLowerCase()))
+                    .filter(word -> word.getInEnglish().equalsIgnoreCase(word.getTranslation().trim()))
                     .collect(Collectors.toList());
             words.removeAll(correctTranslations);
         }
         if (translationForm.getToLanguage().equals("inEstonian")) {
             correctTranslations = words.stream()
-                    .filter(word -> word.getInEstonian().equals(word.getTranslation().trim().toLowerCase()))
+                    .filter(word -> word.getInEstonian().equalsIgnoreCase(word.getTranslation().trim()))
                     .collect(Collectors.toList());
             words.removeAll(correctTranslations);
         }
         if (translationForm.getToLanguage().equals("inRussian")) {
             correctTranslations = words.stream()
-                    .filter(word -> word.getInRussian().equals(word.getTranslation().trim().toLowerCase()))
+                    .filter(word -> word.getInRussian().equalsIgnoreCase(word.getTranslation().trim()))
                     .collect(Collectors.toList());
             words.removeAll(correctTranslations);
         }

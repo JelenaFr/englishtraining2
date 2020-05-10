@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Training page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     <style>
         body {
             margin: 200; /* Убираем отступы */
         }
+
         .parent {
             margin: 20%; /* Отступы вокруг элемента */
             background: #fd0; /* Цвет фона */
             padding: 10px; /* Поля вокруг текста */
         }
+
         .child {
             border: 3px solid #666; /* Параметры рамки */
             padding: 10px; /* Поля вокруг текста */
@@ -31,11 +36,24 @@
 
         <table>
             <thead>
-            <tr>
-                <th th:text="*{fromLanguage}"></th>
-                <th th:text="*{toLanguage}"></th>
 
-            </tr>
+                <th:block th:switch="*{fromLanguage}">
+                    <div th:case="'inEnglish'">
+                        <th>Inglish</th></div>
+                    <div th:case="'inEstonian'">
+                        <th>Estonian</th></div>
+                    <div th:case="'inRussian'">
+                        <th>Russian</th></div>
+            </th:block>
+
+                <th:block th:switch="*{toLanguage}">
+                        <div th:case="'inEnglish'">
+                            <th>Inglish</th></div>
+                        <div th:case="'inEstonian'">
+                            <th>Estonian</th></div>
+                        <div th:case="'inRussian'">
+                            <th>Russian</th></div>
+                </th:block>
             </thead>
             <tbody>
             <th:block th:switch="*{fromLanguage}">
@@ -76,6 +94,8 @@
 
         <input type="hidden" th:field="*{toLanguage}"/>
         <input type="hidden" th:field="*{fromLanguage}"/>
+        <br>
+        <br>
         <button type="submit">Submit</button>
     </form>
 

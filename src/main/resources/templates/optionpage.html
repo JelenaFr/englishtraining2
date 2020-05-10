@@ -6,9 +6,10 @@
     <title>Option page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <style>
         body {
-            margin: 200; /* Убираем отступы */
+            margin: 200px; /* Убираем отступы */
         }
         .parent {
             margin: 20%; /* Отступы вокруг элемента */
@@ -19,7 +20,11 @@
             border: 3px solid #666; /* Параметры рамки */
             padding: 10px; /* Поля вокруг текста */
             margin: 10px; /* Отступы вокруг */
+            cursor: pointer;
         }
+
+
+
     </style>
 
 </head>
@@ -28,14 +33,15 @@
 <h2>Select Options</h2>
 
 <div>
-    <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post">
-        <input th:field="*{complexity}" type="radio" name="complexity" value="EASY" checked="checked"> EASY<br>
+    <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post" >
+        <input th:field="*{complexity}" type="radio"  name="complexity" value="EASY" checked="checked"> EASY<br>
         <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM" > MEDIUM<br>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD" > HARD<br>
+        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"  > HARD<br>
+
         <br>
         <br>
 
-        <select th:field="*{fromLanguage}">
+        <select style="width: 210px " th:field="*{fromLanguage}">
             <option disabled value="">Please select first language</option>
             <option th:field="*{fromLanguage}" value="inEnglish"  th:text="English"  >english</option>
             <option th:field="*{fromLanguage}" value="inEstonian" th:text="Estonian" >estonian</option>
@@ -44,7 +50,7 @@
         </select>
         <br>
         <br>
-        <select th:field="*{toLanguage}">
+        <select style="width: 210px " th:field="*{toLanguage}">
             <option disabled value="">Please select second language</option>
             <option th:field="*{toLanguage}" value="inEnglish" th:text="English" >english</option>
             <option th:field="*{toLanguage}" value="inEstonian"th:text="Estonian" >estonian</option>
