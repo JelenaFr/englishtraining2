@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping
-public class MainController  {
+public class MainController {
     @Autowired
     private WordRepo wordRepo;
 
@@ -35,13 +35,13 @@ public class MainController  {
     }
 
     @GetMapping(value = "/start/addword")
-    public String index( Model model) {
+    public String index(Model model) {
         model.addAttribute("newword", new Word());
         return "addword";
     }
 
     @PostMapping("/start/addword")
-    public String addBookform(@Valid Word word, Model model) {
+    public String addBookform(Word word, Model model) {
         model.addAttribute("newword", new Word());
         wordRepo.save(word);
         return "redirect:/start";
@@ -58,7 +58,7 @@ public class MainController  {
     }
 
     @PostMapping("start/edit/{id}")
-    public String updateBook( @PathVariable("id") Long wordId, @Valid Word word) {
+    public String updateBook(@PathVariable("id") Long wordId, @Valid Word word) {
         Word fixingword = wordRepo.findById(wordId).get();
         wordRepo.save(word);
         return "redirect:/start/";
@@ -80,9 +80,8 @@ public class MainController  {
         form.setFromLanguage(selection.getFromLanguage());
         form.setToLanguage(selection.getToLanguage());
 
+
         model.addAttribute("translationForm", form);
-
-
 
 
         return "trainingpage";

@@ -9,5 +9,4 @@ public class UserSelectionForm {
 	private Complexity complexity;
 	private String fromLanguage;
 	private String toLanguage;
-
 }

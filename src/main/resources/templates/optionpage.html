@@ -33,10 +33,11 @@
 <h2>Select Options</h2>
 
 <div>
-    <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post" >
-        <input th:field="*{complexity}" type="radio"  name="complexity" value="EASY" checked="checked"> EASY<br>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="MEDIUM" > MEDIUM<br>
-        <input th:field="*{complexity}" type="radio" name="complexity" value="HARD"  > HARD<br>
+    <form th:action="@{/optionpage}" th:object="${userSelectionForm}" method="post"  >
+        <div><input type="radio" th:field="*{complexity}"  name="complexity" value="EASY" checked="checked"/> EASY</div>
+        <div><input type="radio" th:field="*{complexity}"  name="complexity" value="MEDIUM" /> MEDIUM</div>
+        <div><input type="radio" th:field="*{complexity}"  name="complexity" value="HARD" /> HARD</div>
+
 
         <br>
         <br>
