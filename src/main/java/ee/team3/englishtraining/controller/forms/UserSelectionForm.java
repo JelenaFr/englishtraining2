@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class UserSelectionForm {
 
-	private Complexity complexity;
+	private Complexity complexity = Complexity.EASY;
 	private String fromLanguage;
 	private String toLanguage;
 }
